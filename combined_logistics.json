@@ -1,0 +1,473 @@
+{
+  "trucks": [
+    {
+      "FLEET": "FLEET 008",
+      "DESCRIPTION": "sml spray truck",
+      "KMS_25_10_24": "493,608",
+      "REGO": "CGG674",
+      "YEAR_MODEL_TYPE": "2010 Fuso Fighter",
+      "Age": "15",
+      "Status": "active",
+      "Basket Total": "140",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 010",
+      "DESCRIPTION": "sml spray truck",
+      "KMS_25_10_24": "476,394",
+      "REGO": "1GJW598",
+      "YEAR_MODEL_TYPE": "2012 Isuzu",
+      "Age": "13",
+      "Status": "active",
+      "Basket Total": "140",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 005",
+      "DESCRIPTION": "",
+      "KMS_25_10_24": "",
+      "REGO": "1HJE031",
+      "YEAR_MODEL_TYPE": "2015 Isuzu D-Max Ute",
+      "Age": "10",
+      "Status": "active",
+      "Basket Total": "0",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 006",
+      "DESCRIPTION": "",
+      "KMS_25_10_24": "",
+      "REGO": "1IJS503",
+      "YEAR_MODEL_TYPE": "2024 Hino 300 Refvan",
+      "Age": "1",
+      "Status": "not-active",
+      "Basket Total": "0",
+      "Area": ""
+    },
+    {
+      "FLEET": "FLEET 007",
+      "DESCRIPTION": "",
+      "KMS_25_10_24": "",
+      "REGO": "",
+      "YEAR_MODEL_TYPE": "",
+      "Age": "",
+      "Status": "not-active",
+      "Basket Total": "0",
+      "Area": ""
+    },
+    {
+      "FLEET": "FLEET 013",
+      "DESCRIPTION": "sml spray truck",
+      "KMS_25_10_24": "130,146",
+      "REGO": "1HMD642",
+      "YEAR_MODEL_TYPE": "2021 Isuzu Refvan",
+      "Age": "4",
+      "Status": "active",
+      "Basket Total": "140",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 014",
+      "DESCRIPTION": "sml spray truck",
+      "KMS_25_10_24": "144,758",
+      "REGO": "1HMI864",
+      "YEAR_MODEL_TYPE": "2021 Isuzu Refvan",
+      "Age": "4",
+      "Status": "active",
+      "Basket Total": "140",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 023",
+      "DESCRIPTION": "lge dry truck",
+      "KMS_25_10_24": "269,358",
+      "REGO": "CGG5918",
+      "YEAR_MODEL_TYPE": "2013 Fuso FS8x4",
+      "Age": "12",
+      "Status": "not-active",
+      "Basket Total": "0",
+      "Area": ""
+    },
+    {
+      "FLEET": "FLEET 025",
+      "DESCRIPTION": "lge spray truck",
+      "KMS_25_10_24": "658,152",
+      "REGO": "1CUI238",
+      "YEAR_MODEL_TYPE": "2007 Isuzu FCZ 1400",
+      "Age": "18",
+      "Status": "active",
+      "Basket Total": "260",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 033",
+      "DESCRIPTION": "sml spray truck",
+      "KMS_25_10_24": "144,639",
+      "REGO": "1HMQ081",
+      "YEAR_MODEL_TYPE": "2021 Isuzu Refvan",
+      "Age": "4",
+      "Status": "active",
+      "Basket Total": "140",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 038",
+      "DESCRIPTION": "sml spray truck",
+      "KMS_25_10_24": "147,655",
+      "REGO": "1HNG294",
+      "YEAR_MODEL_TYPE": "2021 Isuzu Refvan",
+      "Age": "4",
+      "Status": "active",
+      "Basket Total": "140",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 040",
+      "DESCRIPTION": "lge spray truck",
+      "KMS_25_10_24": "316,138",
+      "REGO": "1HNA681",
+      "YEAR_MODEL_TYPE": "2021 Isuzu Refvan",
+      "Age": "4",
+      "Status": "active",
+      "Basket Total": "260",
+      "Area": "North"
+    },
+    {
+      "FLEET": "FLEET 041",
+      "DESCRIPTION": "lge spray truck",
+      "KMS_25_10_24": "185,883",
+      "REGO": "1HPB650",
+      "YEAR_MODEL_TYPE": "2021 Isuzu Refvan",
+      "Age": "4",
+      "Status": "active",
+      "Basket Total": "260",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 042",
+      "DESCRIPTION": "sml spray truck",
+      "KMS_25_10_24": "68,172",
+      "REGO": "CGG256E",
+      "YEAR_MODEL_TYPE": "2017 Fuso Canter 918 Refer",
+      "Age": "8",
+      "Status": "active",
+      "Basket Total": "140",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 043",
+      "DESCRIPTION": "sml spray truck",
+      "KMS_25_10_24": "138,064",
+      "REGO": "1HOT062",
+      "YEAR_MODEL_TYPE": "2022 Isuzu Refvan",
+      "Age": "3",
+      "Status": "active",
+      "Basket Total": "140",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 047",
+      "DESCRIPTION": "sml spray truck",
+      "KMS_25_10_24": "152,748",
+      "REGO": "CGG233F",
+      "YEAR_MODEL_TYPE": "2018 Fuso Fighter",
+      "Age": "7",
+      "Status": "active",
+      "Basket Total": "140",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 048",
+      "DESCRIPTION": "sml spray truck",
+      "KMS_25_10_24": "148,112",
+      "REGO": "CGG022F",
+      "YEAR_MODEL_TYPE": "2018 Fuso Fighter",
+      "Age": "7",
+      "Status": "active",
+      "Basket Total": "140",
+      "Area": "North"
+    },
+    {
+      "FLEET": "FLEET 049",
+      "DESCRIPTION": "lge spray truck",
+      "KMS_25_10_24": "362,737",
+      "REGO": "CGG570F",
+      "YEAR_MODEL_TYPE": "2018 Fuso Fighter 2427",
+      "Age": "7",
+      "Status": "active",
+      "Basket Total": "260",
+      "Area": "North"
+    },
+    {
+      "FLEET": "FLEET 051",
+      "DESCRIPTION": "lge dry truck",
+      "KMS_25_10_24": "",
+      "REGO": "1CAA553",
+      "YEAR_MODEL_TYPE": "2000 Isuzu",
+      "Age": "25",
+      "Status": "not-active",
+      "Basket Total": "0",
+      "Area": ""
+    },
+    {
+      "FLEET": "FLEET 052",
+      "DESCRIPTION": "lge spray truck",
+      "KMS_25_10_24": "437,822",
+      "REGO": "CGG561F",
+      "YEAR_MODEL_TYPE": "2018 Fuso Fighter",
+      "Age": "7",
+      "Status": "active",
+      "Basket Total": "260",
+      "Area": "North"
+    },
+    {
+      "FLEET": "FLEET 053",
+      "DESCRIPTION": "lge spray truck",
+      "KMS_25_10_24": "501,034",
+      "REGO": "CGG572F",
+      "YEAR_MODEL_TYPE": "2018 Fuso Fighter",
+      "Age": "7",
+      "Status": "active",
+      "Basket Total": "260",
+      "Area": "North"
+    },
+    {
+      "FLEET": "FLEET 055",
+      "DESCRIPTION": "lge spray truck",
+      "KMS_25_10_24": "297,871",
+      "REGO": "CGG116E",
+      "YEAR_MODEL_TYPE": "2017 Fuso Fighter 2427",
+      "Age": "8",
+      "Status": "active",
+      "Basket Total": "260",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 061",
+      "DESCRIPTION": "sml spray truck",
+      "KMS_25_10_24": "381,381",
+      "REGO": "GNG637A",
+      "YEAR_MODEL_TYPE": "2006 Mitsubishi 6ton",
+      "Age": "19",
+      "Status": "active",
+      "Basket Total": "140",
+      "Area": "North"
+    },
+    {
+      "FLEET": "FLEET 062",
+      "DESCRIPTION": "lge spray truck",
+      "KMS_25_10_24": "483,357",
+      "REGO": "1EWM127",
+      "YEAR_MODEL_TYPE": "2015 Isuzu FVM 1400 manual",
+      "Age": "10",
+      "Status": "active",
+      "Basket Total": "260",
+      "Area": "North"
+    },
+    {
+      "FLEET": "FLEET 064",
+      "DESCRIPTION": "sml  dry truck",
+      "KMS_25_10_24": "279,287",
+      "REGO": "1DBM754",
+      "YEAR_MODEL_TYPE": "2009 Hino Vantrk",
+      "Age": "16",
+      "Status": "not-active",
+      "Basket Total": "0",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 070",
+      "DESCRIPTION": "lge spray truck",
+      "KMS_25_10_24": "5034",
+      "REGO": "1IGS315",
+      "YEAR_MODEL_TYPE": "2023 Isuzu Refvan",
+      "Age": "2",
+      "Status": "active",
+      "Basket Total": "260",
+      "Area": "North"
+    },
+    {
+      "FLEET": "FLEET 071",
+      "DESCRIPTION": "lge spray truck",
+      "KMS_25_10_24": "4162",
+      "REGO": "1IJG703",
+      "YEAR_MODEL_TYPE": "2023 Isuzu Refvan",
+      "Age": "2",
+      "Status": "active",
+      "Basket Total": "260",
+      "Area": "North"
+    },
+    {
+      "FLEET": "FLEET 072",
+      "DESCRIPTION": "sml spray truck",
+      "KMS_25_10_24": "0",
+      "REGO": "NEW SMALL TRUCK",
+      "YEAR_MODEL_TYPE": "2023 Isuzu Refvan",
+      "Age": "2",
+      "Status": "active",
+      "Basket Total": "140",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 075",
+      "DESCRIPTION": "sml spray truck",
+      "KMS_25_10_24": "0",
+      "REGO": "NEW SMALL TRUCK",
+      "YEAR_MODEL_TYPE": "2023 Isuzu Refvan",
+      "Age": "2",
+      "Status": "active",
+      "Basket Total": "140",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 076",
+      "DESCRIPTION": "sml spray truck",
+      "KMS_25_10_24": "0",
+      "REGO": "NEW SMALL TRUCK",
+      "YEAR_MODEL_TYPE": "2023 Isuzu Refvan",
+      "Age": "2",
+      "Status": "active",
+      "Basket Total": "140",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 081",
+      "DESCRIPTION": "lge spray truck",
+      "KMS_25_10_24": "440,284",
+      "REGO": "CGG887C",
+      "YEAR_MODEL_TYPE": "2016 Fuso Fighter 2427",
+      "Age": "9",
+      "Status": "active",
+      "Basket Total": "260",
+      "Area": "North"
+    },
+    {
+      "FLEET": "FLEET 082",
+      "DESCRIPTION": "lge spray truck",
+      "KMS_25_10_24": "370,962",
+      "REGO": "CGG889C",
+      "YEAR_MODEL_TYPE": "2017 Fuso Fighter 2427",
+      "Age": "8",
+      "Status": "active",
+      "Basket Total": "260",
+      "Area": "North"
+    },
+    {
+      "FLEET": "FLEET 083",
+      "DESCRIPTION": "med dry truck",
+      "KMS_25_10_24": "209,423",
+      "REGO": "1CSG710",
+      "YEAR_MODEL_TYPE": "2004 Isuzu Refvan",
+      "Age": "21",
+      "Status": "not-active",
+      "Basket Total": "0",
+      "Area": ""
+    },
+    {
+      "FLEET": "FLEET 084",
+      "DESCRIPTION": "lge spray truck",
+      "KMS_25_10_24": "347,682",
+      "REGO": "CGG278F",
+      "YEAR_MODEL_TYPE": "2018 Fuso Fighter 2427",
+      "Age": "7",
+      "Status": "active",
+      "Basket Total": "260",
+      "Area": "North"
+    },
+    {
+      "FLEET": "FLEET 086",
+      "DESCRIPTION": "lge spray truck",
+      "KMS_25_10_24": "534,628",
+      "REGO": "CGG637B",
+      "YEAR_MODEL_TYPE": "2015 Fuso Fighter 2x6",
+      "Age": "10",
+      "Status": "active",
+      "Basket Total": "260",
+      "Area": "North"
+    },
+    {
+      "FLEET": "FLEET 087",
+      "DESCRIPTION": "lge spray truck",
+      "KMS_25_10_24": "461,380",
+      "REGO": "CGG634B",
+      "YEAR_MODEL_TYPE": "2015 Fuso Fighter 2x6",
+      "Age": "10",
+      "Status": "active",
+      "Basket Total": "260",
+      "Area": "North"
+    },
+    {
+      "FLEET": "FLEET 088",
+      "DESCRIPTION": "lge spray truck",
+      "KMS_25_10_24": "529,143",
+      "REGO": "CGG635B",
+      "YEAR_MODEL_TYPE": "2015 Fuso Fighter 2x6",
+      "Age": "10",
+      "Status": "active",
+      "Basket Total": "260",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 089",
+      "DESCRIPTION": "lge spray truck",
+      "KMS_25_10_24": "407,862",
+      "REGO": "CGG611B",
+      "YEAR_MODEL_TYPE": "2015 Fuso Fighter 2x4",
+      "Age": "10",
+      "Status": "active",
+      "Basket Total": "260",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 091",
+      "DESCRIPTION": "sml dry truck",
+      "KMS_25_10_24": "306,703",
+      "REGO": "1GEG585",
+      "YEAR_MODEL_TYPE": "1999 Isuzu NPR200",
+      "Age": "26",
+      "Status": "not-active",
+      "Basket Total": "0",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 092",
+      "DESCRIPTION": "sml spray truck",
+      "KMS_25_10_24": "0",
+      "REGO": "NEW SMALL TRUCK",
+      "YEAR_MODEL_TYPE": "2023 Isuzu Refvan",
+      "Age": "2",
+      "Status": "active",
+      "Basket Total": "140",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 093",
+      "DESCRIPTION": "med spray truck",
+      "KMS_25_10_24": "397,088",
+      "REGO": "GNG097A",
+      "YEAR_MODEL_TYPE": "2008 Fuso Fighter",
+      "Age": "17",
+      "Status": "active",
+      "Basket Total": "140",
+      "Area": "South"
+    },
+    {
+      "FLEET": "FLEET 093",
+      "DESCRIPTION": "med spray truck",
+      "KMS_25_10_24": "397,088",
+      "REGO": "GNG097A",
+      "YEAR_MODEL_TYPE": "2008 Fuso Fighter",
+      "Age": "17",
+      "Status": "active",
+      "Basket Total": "140",
+      "Area": "South"
+    }
+  ],
+
+  "logistics_config": {
+    "max_time_out_of_water_minutes": 240,
+    "load_time_minutes": 15,
+    "offload_time_per_catch_minutes": 15
+  }
+
+}
