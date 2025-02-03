@@ -72,13 +72,13 @@ LOCATION_MAP = {
 def get_location_info(location: str):
     """
     Return a dict with:
-      - area (North/South)
-      - drop_off_location (e.g. "Geraldton", "Fremantle/Welshpool")
-      - travel_minutes (int)
-    If location not found, return a fallback with 'Unknown' and 90 minutes.
+      - area: "North"/"South"
+      - drop_off_location: e.g., "Geraldton" or "Fremantle/Welshpool"
+      - travel_minutes: int, time in minutes from port -> drop-off
+    If not found, default to unknown.
     """
-    key = location.strip()
-    info = LOCATION_MAP.get(key, None)
+    loc_str = location.strip()
+    info = LOCATION_MAP.get(loc_str, None)
     if info is not None:
         return info
     else:
