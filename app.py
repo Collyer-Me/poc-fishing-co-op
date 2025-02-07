@@ -1,16 +1,15 @@
-# app.py
 import streamlit as st
 import pandas as pd
 
 from truck_mapping import load_truck_data
 from prepare_data import prepare_data_for_scheduling
 from scheduling_logic import schedule_catches
-from report_display import display_trips
+from report_layout import show_results_with_tabs
 
-st.title("POC Truck Logistics - Final Structured Report")
+st.title("POC Truck Logistics with Tabs & Summaries")
 
 json_path = st.text_input("Path to combined_logistics.json", "combined_logistics.json")
-uploaded_file = st.file_uploader("Upload Catch CSV/Excel", type=["csv","xlsx"])
+uploaded_file = st.file_uploader("Upload Catch CSV/Excel", type=["csv", "xlsx"])
 
 if json_path and uploaded_file:
     try:
@@ -19,35 +18,29 @@ if json_path and uploaded_file:
         st.error(f"Error loading JSON: {e}")
         st.stop()
 
-    # Read
+    # Read data
     if uploaded_file.name.lower().endswith(".csv"):
         df_catch = pd.read_csv(uploaded_file)
     else:
         df_catch = pd.read_excel(uploaded_file)
 
-    # Possibly unify Offload Time if arrow issues
     if "Offload Time" in df_catch.columns:
         df_catch["Offload Time"] = df_catch["Offload Time"].astype(str)
 
-    # Prepare
+    # Prepare data for scheduling
     df_filtered = prepare_data_for_scheduling(df_catch)
 
     st.subheader("Filtered Catch Data")
     st.dataframe(df_filtered)
 
-    # Schedule
-    trips, unassigned = schedule_catches(df_filtered, trucks, config)
+    # Schedule trips
+    trips, unassigned = schedule_catches(df_filtered, trucks)
 
-    st.subheader("Scheduled Trips")
-    if trips:
-        display_trips(trips)
-    else:
-        st.info("No trips formed. Possibly all unassigned or no data.")
+    # Separate trips by area (South and North)
+    south_trips = [trip for trip in trips if trip["area"] == "South"]
+    north_trips = [trip for trip in trips if trip["area"] == "North"]
 
-    if unassigned:
-        st.subheader("Unassigned Catches")
-        st.dataframe(pd.DataFrame(unassigned))
-    else:
-        st.success("All assigned within 4-hour limit!")
+    # Display the results using tabs
+    show_results_with_tabs(south_trips, north_trips, unassigned)
 else:
-    st.info("Provide JSON path & upload daily catch data.")
+    st.info("Please provide the JSON path & upload daily catch data.")
