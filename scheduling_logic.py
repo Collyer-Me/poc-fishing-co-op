@@ -36,81 +36,82 @@ def parse_date_time(date_val, time_val):
 
 def schedule_catches(df: pd.DataFrame, trucks: list, config: dict):
     """
-    Schedule trips based on the agreed logic:
-      - Start each trip with the largest available truck.
-      - Add catches if they match location, fit within truck capacity, and stay under max out-of-water time.
-      - If a catch exceeds truck capacity OR has a different location, close the trip and start a new one.
-      - If adding a catch would exceed max out-of-water time, close the trip and start a new one with the next largest available truck.
-      - If no truck is available for a catch, mark it as unassigned.
-    Returns: (trips, unassigned)
+    Schedule trips ensuring each truck is only used once per day.
     """
     trips = []
     unassigned = []
+    used_trucks = set()  # Track used trucks per day
 
     df["ReadyTime"] = df.apply(lambda r: parse_date_time(r.get("Offload Date"), r.get("Offload Time")), axis=1)
     df = df.dropna(subset=["ReadyTime"]).copy()
-    
+
     if "Est. Baskets" in df.columns:
         df["Est. Baskets"] = df["Est. Baskets"].fillna(0).astype(int)
     else:
         df["Est. Baskets"] = 1
-    
+
     df = df.sort_values(["Offload Date", "Location", "ReadyTime"])
-    
-    # Sort trucks by capacity (largest first)
     trucks = sorted(trucks, key=lambda t: t["Basket Total"], reverse=True)
-    
+
     date_groups = df.groupby("Offload Date")
-    
+
     for date_val, df_by_date in date_groups:
+        used_trucks.clear()  # Reset used trucks for the new day
         loc_groups = df_by_date.groupby("Location")
-        
+
         for loc, df_loc in loc_groups:
             df_loc_sorted = df_loc.sort_values("ReadyTime").to_dict("records")
             loc_info = get_location_info(loc)
             loc_area = loc_info["area"]
             drop_dest = loc_info["drop_off_location"]
             travel_minutes = loc_info["travel_minutes"]
-            
+
             i = 0
             n = len(df_loc_sorted)
             load_time_min = config["load_time_minutes"]
             offload_per_catch = config["offload_time_per_catch_minutes"]
             max_time = config["max_time_out_of_water_minutes"]
-            
+
             while i < n:
                 trip_catches = []
                 used_capacity = 0
-                truck_used = trucks[0]  # Start with the largest available truck
-                
+
+                # Find the largest available truck that has not been used today
+                available_trucks = [t for t in trucks if t["FLEET"] not in used_trucks]
+                if not available_trucks:
+                    # No available truck left for the day, mark remaining catches as unassigned
+                    unassigned.extend(df_loc_sorted[i:])
+                    break
+
+                truck_used = available_trucks[0]  # Pick the largest available truck
+                used_trucks.add(truck_used["FLEET"])  # Mark truck as used
+
                 while i < n:
                     cN = df_loc_sorted[i]
                     neededN = cN["Est. Baskets"]
-                    
+
                     # Check if catch fits the current trip
                     if (used_capacity + neededN > truck_used["Basket Total"]) or (trip_catches and cN["Location"] != loc):
                         break  # Close the current trip
-                    
+
                     # Determine load times
                     if trip_catches:
                         last_load_finish = trip_catches[-1]["LoadFinish"]
                         actual_load_startN = max(last_load_finish, cN["ReadyTime"])
                     else:
                         actual_load_startN = cN["ReadyTime"]
-                    
+
                     load_finishN = actual_load_startN + datetime.timedelta(minutes=load_time_min)
-                    
-                                        # Check max out-of-water time BEFORE adding the catch
+
+                    # Check max out-of-water time BEFORE adding the catch
                     final_arrival_time = load_finishN + datetime.timedelta(minutes=travel_minutes)
                     predicted_final_offload_time = final_arrival_time + datetime.timedelta(minutes=(len(trip_catches) + 1) * offload_per_catch)
                     predicted_out_of_water_time = (predicted_final_offload_time - (trip_catches[0]["ReadyTime"] if trip_catches else cN["ReadyTime"])).total_seconds() / 60.0
-                    print(f"Predicted max out-of-water time if added: {predicted_out_of_water_time} minutes (Limit: {max_time})")
                     
                     if predicted_out_of_water_time > max_time:
-                        print(f"Trip exceeded max out-of-water time. Closing trip with {len(trip_catches)} catches.")
                         break  # Close the trip if adding the catch would exceed max out-of-water time
-                    
-                    # Now add the catch since it's within the limit
+
+                    # Add catch to trip
                     trip_catches.append({
                         "Boat": cN.get("Boat", "Unknown"),
                         "ReadyTime": cN["ReadyTime"],
@@ -119,32 +120,21 @@ def schedule_catches(df: pd.DataFrame, trucks: list, config: dict):
                     })
                     used_capacity += neededN
                     i += 1
-                    
-                    # Check max out-of-water time
+
+                    # Final trip checks
                     final_arrival_time = load_finishN + datetime.timedelta(minutes=travel_minutes)
                     final_offload_time = final_arrival_time + datetime.timedelta(minutes=(len(trip_catches) * offload_per_catch))
                     out_of_water_time = (final_offload_time - (trip_catches[0]["ReadyTime"] if trip_catches else trip_catches[-1]["ReadyTime"])).total_seconds() / 60.0
-                    print(f"Checking max out-of-water time: {out_of_water_time} minutes (Limit: {max_time})")
                     
                     if out_of_water_time > max_time:
-                        print(f"Trip exceeded max out-of-water time. Closing trip with {len(trip_catches)} catches.")
                         break  # Close the trip if max out-of-water time exceeded
-                
-                # Close and finalize the trip
+
+                # Finalize the trip
                 required_baskets = sum(catch["Baskets"] for catch in trip_catches)
-                
-                # Find the next largest available truck
-                possible_trucks = [t for t in trucks if t["Basket Total"] >= required_baskets]
-                if possible_trucks:
-                    truck_used = max(possible_trucks, key=lambda t: t["Basket Total"])  # Largest available truck
-                else:
-                    unassigned.extend(trip_catches)
-                    continue
-                
+
                 for catch in trip_catches:
                     catch["OutOfWaterMinutes"] = (final_offload_time - catch["ReadyTime"]).total_seconds() / 60.0
-                    print(f"Catch {catch['Boat']} OutOfWaterMinutes: {catch['OutOfWaterMinutes']}")
-                
+
                 trips.append({
                     "trip_date": str(date_val),
                     "truck_id": truck_used["FLEET"],
@@ -157,5 +147,5 @@ def schedule_catches(df: pd.DataFrame, trucks: list, config: dict):
                     "OutOfWaterMinutes": out_of_water_time,
                     "catches": trip_catches
                 })
-    
+
     return trips, unassigned
