@@ -450,24 +450,13 @@
       "Status": "active",
       "Basket Total": "140",
       "Area": "South"
-    },
-    {
-      "FLEET": "FLEET 093",
-      "DESCRIPTION": "med spray truck",
-      "KMS_25_10_24": "397,088",
-      "REGO": "GNG097A",
-      "YEAR_MODEL_TYPE": "2008 Fuso Fighter",
-      "Age": "17",
-      "Status": "active",
-      "Basket Total": "140",
-      "Area": "South"
     }
   ],
 
   "logistics_config": {
     "max_time_out_of_water_minutes": 240,
     "load_time_minutes": 15,
-    "offload_time_per_catch_minutes": 15
+    "offload_time_per_catch_minutes": 30
   }
 
 }

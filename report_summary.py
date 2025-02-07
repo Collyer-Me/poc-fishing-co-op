@@ -11,10 +11,10 @@ def display_summary(south_trips, north_trips):
     total_catches = sum(len(trip["catches"]) for trip in south_trips + north_trips)
 
     south_avg_out_of_water = (
-        sum(trip["out_of_water"] for trip in south_trips) / south_count if south_count > 0 else 0
+        sum(trip["OutOfWaterMinutes"] for trip in south_trips) / south_count if south_count > 0 else 0
     )
     north_avg_out_of_water = (
-        sum(trip["out_of_water"] for trip in north_trips) / north_count if north_count > 0 else 0
+        sum(trip["OutOfWaterMinutes"] for trip in north_trips) / north_count if north_count > 0 else 0
     )
 
     st.write(f"### 🚛 South Region Trips: {south_count}")

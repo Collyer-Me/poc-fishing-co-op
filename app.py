@@ -34,7 +34,7 @@ if json_path and uploaded_file:
     st.dataframe(df_filtered)
 
     # Schedule trips
-    trips, unassigned = schedule_catches(df_filtered, trucks)
+    trips, unassigned = schedule_catches(df_filtered, trucks, config)
 
     # Separate trips by area (South and North)
     south_trips = [trip for trip in trips if trip["area"] == "South"]
