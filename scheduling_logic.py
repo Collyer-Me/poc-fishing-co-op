@@ -100,6 +100,17 @@ def schedule_catches(df: pd.DataFrame, trucks: list, config: dict):
                     
                     load_finishN = actual_load_startN + datetime.timedelta(minutes=load_time_min)
                     
+                                        # Check max out-of-water time BEFORE adding the catch
+                    final_arrival_time = load_finishN + datetime.timedelta(minutes=travel_minutes)
+                    predicted_final_offload_time = final_arrival_time + datetime.timedelta(minutes=(len(trip_catches) + 1) * offload_per_catch)
+                    predicted_out_of_water_time = (predicted_final_offload_time - (trip_catches[0]["ReadyTime"] if trip_catches else cN["ReadyTime"])).total_seconds() / 60.0
+                    print(f"Predicted max out-of-water time if added: {predicted_out_of_water_time} minutes (Limit: {max_time})")
+                    
+                    if predicted_out_of_water_time > max_time:
+                        print(f"Trip exceeded max out-of-water time. Closing trip with {len(trip_catches)} catches.")
+                        break  # Close the trip if adding the catch would exceed max out-of-water time
+                    
+                    # Now add the catch since it's within the limit
                     trip_catches.append({
                         "Boat": cN.get("Boat", "Unknown"),
                         "ReadyTime": cN["ReadyTime"],
@@ -112,9 +123,11 @@ def schedule_catches(df: pd.DataFrame, trucks: list, config: dict):
                     # Check max out-of-water time
                     final_arrival_time = load_finishN + datetime.timedelta(minutes=travel_minutes)
                     final_offload_time = final_arrival_time + datetime.timedelta(minutes=(len(trip_catches) * offload_per_catch))
-                    out_of_water_time = (final_offload_time - trip_catches[0]["ReadyTime"]).total_seconds() / 60.0
+                    out_of_water_time = (final_offload_time - (trip_catches[0]["ReadyTime"] if trip_catches else trip_catches[-1]["ReadyTime"])).total_seconds() / 60.0
+                    print(f"Checking max out-of-water time: {out_of_water_time} minutes (Limit: {max_time})")
                     
                     if out_of_water_time > max_time:
+                        print(f"Trip exceeded max out-of-water time. Closing trip with {len(trip_catches)} catches.")
                         break  # Close the trip if max out-of-water time exceeded
                 
                 # Close and finalize the trip
@@ -127,6 +140,10 @@ def schedule_catches(df: pd.DataFrame, trucks: list, config: dict):
                 else:
                     unassigned.extend(trip_catches)
                     continue
+                
+                for catch in trip_catches:
+                    catch["OutOfWaterMinutes"] = (final_offload_time - catch["ReadyTime"]).total_seconds() / 60.0
+                    print(f"Catch {catch['Boat']} OutOfWaterMinutes: {catch['OutOfWaterMinutes']}")
                 
                 trips.append({
                     "trip_date": str(date_val),
